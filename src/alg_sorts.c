@@ -11,7 +11,7 @@
 
 char *selection_sort(const char *, const size_t);
 char *insertion_sort(const char *, const size_t);
-void exchange(char *a, const size_t, const size_t);
+void exchange(char *, const size_t, const size_t);
 size_t min_index(const char *, const size_t, const size_t);
 
 char *selection_sort(const char *input, const size_t len) {
