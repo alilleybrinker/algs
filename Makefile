@@ -1,35 +1,35 @@
 
-include_dir = include
-src_dir = src
-target_dir = target
-objs_dir = $(target_dir)/objs
-bin_name = sorts
+INCLUDE_DIR = include
+SRC_DIR = src
+TARGET_DIR = target
+BIN_NAME = sorts
 CC = clang
-CFLAGS=-I$(include_dir)
+OBJS_DIR = $(TARGET_DIR)/objs
+CFLAGS=-I$(INCLUDE_DIR)
 
 # Make the binary.
-all: make_target_dir $(target_dir)/$(bin_name)
+all: make_TARGET_DIR $(TARGET_DIR)/$(BIN_NAME)
 
 # Make and run the binary.
 run: all
-	./$(target_dir)/$(bin_name)
+	./$(TARGET_DIR)/$(BIN_NAME)
 
 # Delete the target directory.
 clean:
-	rm -r $(target_dir)/
+	rm -r $(TARGET_DIR)/
 
 # Create the target directory.
-make_target_dir:
-	mkdir -p $(target_dir)/
-	mkdir -p $(objs_dir)/
+make_TARGET_DIR:
+	mkdir -p $(TARGET_DIR)/
+	mkdir -p $(OBJS_DIR)/
 
 # Compile object files by building their C files.
-$(objs_dir)/%.o: $(src_dir)/%.c $(DEPS)
+$(OBJS_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 # Build the binary with the required object files.
-$(target_dir)/$(bin_name): $(objs_dir)/main.o $(objs_dir)/alg_sorts.o
-	$(CC) -o $(target_dir)/$(bin_name) $(objs_dir)/main.o $(objs_dir)/alg_sorts.o
+$(TARGET_DIR)/$(BIN_NAME): $(OBJS_DIR)/main.o $(OBJS_DIR)/alg_sorts.o
+	$(CC) -o $(TARGET_DIR)/$(BIN_NAME) $(OBJS_DIR)/main.o $(OBJS_DIR)/alg_sorts.o
 
-.PHONY: make_target_dir all clean run
+.PHONY: make_TARGET_DIR all clean run
 
