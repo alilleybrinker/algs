@@ -1,6 +1,6 @@
 
-#ifndef SORTS_H
-#define SORTS_H
+#ifndef ALG_SORTS_H
+#define ALG_SORTS_H
 
 /**
  * Produces a sorted equivalent of the input array.
