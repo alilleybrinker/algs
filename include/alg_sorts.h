@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 
 #ifndef ALG_SORTS_H
 #define ALG_SORTS_H
