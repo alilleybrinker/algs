@@ -3,6 +3,8 @@
 #ifndef ALG_SORTS_H
 #define ALG_SORTS_H
 
+#include <stdlib.h>
+
 /**
  * Produces a sorted equivalent of the input array.
  *
