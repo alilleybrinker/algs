@@ -9,7 +9,7 @@ OBJS_DIR = $(TARGET_DIR)/objs
 SRC_FILES = $(wildcard $(SRC_DIR)/*)
 HEADER_FILES = $(wildcard $(INCLUDE_DIR)/*)
 OBJ_FILES = $(patsubst src/%.c,$(OBJS_DIR)/%.o,$(SRC_FILES))
-CFLAGS = -I$(INCLUDE_DIR) -Wall -Werror -pedantic
+override CFLAGS += -I$(INCLUDE_DIR) -Wall -Werror -pedantic
 
 # Make the binary.
 all: make_target_dir $(TARGET_DIR)/$(BIN_NAME)
