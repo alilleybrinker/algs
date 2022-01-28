@@ -23,8 +23,14 @@ run: all
 clean:
 	rm -r $(TARGET_DIR)/
 
+# Format all source and header files in-place.
 fmt:
 	clang-format -i $(SRC_FILES) $(HEADER_FILES)
+
+# Check all source and header files with cppcheck.
+check:
+	cppcheck $(SRC_FILES) $(HEADER_FILES)
+
 
 # Print the variables we care about.
 vars:
@@ -43,5 +49,5 @@ $(OBJS_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
 $(TARGET_DIR)/$(BIN_NAME): $(OBJ_FILES)
 	$(CC) -o $(TARGET_DIR)/$(BIN_NAME) $(OBJ_FILES)
 
-.PHONY: make_target_dir all clean run vars fmt
+.PHONY: make_target_dir all clean run vars fmt check
 
