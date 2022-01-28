@@ -11,7 +11,7 @@ OBJ_FILES = $(patsubst src/%.c,$(OBJS_DIR)/%.o,$(SRC_FILES))
 CFLAGS = -I$(INCLUDE_DIR)
 
 # Make the binary.
-all: make_TARGET_DIR $(TARGET_DIR)/$(BIN_NAME)
+all: make_target_dir $(TARGET_DIR)/$(BIN_NAME)
 
 # Make and run the binary.
 run: all
@@ -27,7 +27,7 @@ vars:
 	@echo $(OBJ_FILES)
 
 # Create the target directory.
-make_TARGET_DIR:
+make_target_dir:
 	mkdir -p $(TARGET_DIR)/
 	mkdir -p $(OBJS_DIR)/
 
@@ -39,5 +39,5 @@ $(OBJS_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
 $(TARGET_DIR)/$(BIN_NAME): $(OBJ_FILES)
 	$(CC) -o $(TARGET_DIR)/$(BIN_NAME) $(OBJ_FILES)
 
-.PHONY: make_TARGET_DIR all clean run vars
+.PHONY: make_target_dir all clean run vars
 
