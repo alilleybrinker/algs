@@ -8,7 +8,7 @@ CC = clang
 OBJS_DIR = $(TARGET_DIR)/objs
 SRC_FILES = $(wildcard $(SRC_DIR)/*)
 OBJ_FILES = $(patsubst src/%.c,$(OBJS_DIR)/%.o,$(SRC_FILES))
-CFLAGS=-I$(INCLUDE_DIR)
+CFLAGS = -I$(INCLUDE_DIR)
 
 # Make the binary.
 all: make_TARGET_DIR $(TARGET_DIR)/$(BIN_NAME)
