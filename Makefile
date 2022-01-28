@@ -3,7 +3,7 @@
 INCLUDE_DIR = include
 SRC_DIR = src
 TARGET_DIR = target
-BIN_NAME = sorts
+BIN_NAME = test
 CC = clang
 OBJS_DIR = $(TARGET_DIR)/objs
 SRC_FILES = $(wildcard $(SRC_DIR)/*)
@@ -14,8 +14,8 @@ CFLAGS = -I$(INCLUDE_DIR) -Wall -Werror -pedantic
 # Make the binary.
 all: make_target_dir $(TARGET_DIR)/$(BIN_NAME)
 
-# Make and run the binary.
-run: all
+# Make and run the test binary.
+test: all
 	@echo ""
 	@./$(TARGET_DIR)/$(BIN_NAME)
 
@@ -49,5 +49,5 @@ $(OBJS_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
 $(TARGET_DIR)/$(BIN_NAME): $(OBJ_FILES)
 	$(CC) -o $(TARGET_DIR)/$(BIN_NAME) $(OBJ_FILES)
 
-.PHONY: make_target_dir all clean run vars fmt check
+.PHONY: make_target_dir all clean test vars fmt check
 
