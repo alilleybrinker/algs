@@ -33,4 +33,3 @@ void exchange(char *a, const size_t i1, const size_t i2);
 size_t min_index(const char *s, const size_t i1, const size_t i2);
 
 #endif
-

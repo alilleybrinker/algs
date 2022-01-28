@@ -65,4 +65,3 @@ size_t min_index(const char *a, const size_t s, const size_t len) {
 
   return v;
 }
-

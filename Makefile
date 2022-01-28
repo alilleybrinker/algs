@@ -7,6 +7,7 @@ BIN_NAME = sorts
 CC = clang
 OBJS_DIR = $(TARGET_DIR)/objs
 SRC_FILES = $(wildcard $(SRC_DIR)/*)
+HEADER_FILES = $(wildcard $(INCLUDE_DIR)/*)
 OBJ_FILES = $(patsubst src/%.c,$(OBJS_DIR)/%.o,$(SRC_FILES))
 CFLAGS = -I$(INCLUDE_DIR)
 
@@ -21,6 +22,9 @@ run: all
 # Delete the target directory.
 clean:
 	rm -r $(TARGET_DIR)/
+
+fmt:
+	clang-format -i $(SRC_FILES) $(HEADER_FILES)
 
 # Print the variables we care about.
 vars:
@@ -39,5 +43,5 @@ $(OBJS_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
 $(TARGET_DIR)/$(BIN_NAME): $(OBJ_FILES)
 	$(CC) -o $(TARGET_DIR)/$(BIN_NAME) $(OBJ_FILES)
 
-.PHONY: make_target_dir all clean run vars
+.PHONY: make_target_dir all clean run vars fmt
 
