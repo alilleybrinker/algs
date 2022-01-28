@@ -13,19 +13,19 @@ typedef struct {
     test_fn f;
 } test_t;
 
-int selection_sort_succeeds();
-int insertion_sort_succeeds();
+int sort_selection_succeeds();
+int sort_insertion_succeeds();
 bool is_sorted(const char *, const size_t);
 
 int main(int argc, char **argv) {
     const test_t tests[] = {
         {
-            .name = "selection_sort_succeeds",
-            .f = selection_sort_succeeds,
+            .name = "sort_selection_succeeds",
+            .f = sort_selection_succeeds,
         },
         {
-            .name = "insertion_sort_succeeds",
-            .f = insertion_sort_succeeds,
+            .name = "sort_insertion_succeeds",
+            .f = sort_insertion_succeeds,
         }
     };
 
@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
     }
 }
 
-int selection_sort_succeeds() {
+int sort_selection_succeeds() {
     const char *text = "THISQUESTION";
     const size_t len = strlen(text);
     const char *sorted_text = selection_sort(text, len);
@@ -60,7 +60,7 @@ int selection_sort_succeeds() {
     return result;
 }
 
-int insertion_sort_succeeds() {
+int sort_insertion_succeeds() {
     const char *text = "THISQUESTION";
     const size_t len = strlen(text);
     const char *sorted_text = insertion_sort(text, len);
