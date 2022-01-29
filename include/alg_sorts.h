@@ -23,4 +23,13 @@ char *selection_sort(const char *s, const size_t len);
  **/
 char *insertion_sort(const char *s, const size_t len);
 
+/**
+ * Produces a sorted equivalent of the input array.
+ *
+ * Requires len be large enough to contain the input array.
+ *
+ * The returned array must be freed by the caller.
+ **/
+char *shell_sort(const char *s, const size_t len);
+
 #endif
