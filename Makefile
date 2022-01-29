@@ -31,11 +31,6 @@ fmt:
 check:
 	cppcheck $(SRC_FILES) $(HEADER_FILES)
 
-
-# Print the variables we care about.
-vars:
-	@echo $(OBJ_FILES)
-
 # Create the target directory.
 make_target_dir:
 	mkdir -p $(TARGET_DIR)/
@@ -49,5 +44,5 @@ $(OBJS_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
 $(TARGET_DIR)/$(BIN_NAME): $(OBJ_FILES)
 	$(CC) -o $(TARGET_DIR)/$(BIN_NAME) $(OBJ_FILES)
 
-.PHONY: make_target_dir all clean test vars fmt check
+.PHONY: all test clean fmt check make_target_dir
 
