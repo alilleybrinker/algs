@@ -106,7 +106,7 @@ void shell_sort(char *s, const size_t len) {
   }
 }
 
-void exchange(char *a, const size_t i1, const size_t i2) {
+static void exchange(char *a, const size_t i1, const size_t i2) {
   if (DO_LOG) {
     N_OPS += 1;
     printf("swap: %c %c (%u)\n", a[i1], a[i2], N_OPS);
