@@ -1,4 +1,4 @@
-
+# SPDX-License-Identifier: MIT
 
 INCLUDE_DIR = include
 SRC_DIR = src
