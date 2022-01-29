@@ -23,15 +23,4 @@ char *selection_sort(const char *s, const size_t len);
  **/
 char *insertion_sort(const char *s, const size_t len);
 
-/**
- * Swap the elements at the two indices in the array.
- **/
-void exchange(char *a, const size_t i1, const size_t i2);
-
-/**
- * Compute the index of the minimum in the given range from s to len
- * in the array.
- **/
-size_t min_index(const char *s, const size_t i1, const size_t i2);
-
 #endif

@@ -15,16 +15,19 @@ static unsigned int N_OPS = 0;
 
 char *selection_sort(const char *, const size_t);
 char *insertion_sort(const char *, const size_t);
-void exchange(char *, const size_t, const size_t);
-size_t min_index(const char *, const size_t, const size_t);
+static void exchange(char *, const size_t, const size_t);
+static size_t min_index(const char *, const size_t, const size_t);
 
 char *selection_sort(const char *input, const size_t len) {
   N_OPS = 0;
   char *s = (char *)malloc(sizeof(char) * len);
-  strcpy(s, input);
+  strncpy(s, input, len);
 
-  for (size_t i = 0; i < len; ++i)
+  for (size_t i = 0; i < len; ++i) {
+    if (DO_LOG)
+      printf("%s\n", s);
     exchange(s, i, min_index(s, i, len));
+  }
 
   return s;
 }
@@ -32,7 +35,10 @@ char *selection_sort(const char *input, const size_t len) {
 char *insertion_sort(const char *input, const size_t len) {
   N_OPS = 0;
   char *s = (char *)malloc(sizeof(char) * len);
-  strcpy(s, input);
+  strncpy(s, input, len);
+
+  if (DO_LOG)
+    printf("%s\n", s);
 
   for (size_t i = 1; i < len; ++i) {
     for (size_t j = i; j > 0; --j) {
@@ -43,6 +49,9 @@ char *insertion_sort(const char *input, const size_t len) {
 
       if (s[j] < s[j - 1]) {
         exchange(s, j, j - 1);
+        if (DO_LOG)
+          printf("%s\n", s);
+
       } else {
         break;
       }
@@ -63,7 +72,7 @@ void exchange(char *a, const size_t i1, const size_t i2) {
   a[i2] = tmp;
 }
 
-size_t min_index(const char *a, const size_t s, const size_t len) {
+static size_t min_index(const char *a, const size_t s, const size_t len) {
   size_t v = s;
 
   for (size_t i = s + 1; i < len; ++i) {
