@@ -16,6 +16,7 @@ typedef struct {
 
 bool sort_selection_succeeds();
 bool sort_insertion_succeeds();
+bool sort_shell_succeeds();
 bool test_sort_function(sort_fn);
 bool is_sorted(const char *, const size_t);
 
@@ -27,6 +28,10 @@ int main(int argc, char **argv) {
                           {
                               .name = "sort_insertion_succeeds",
                               .f = sort_insertion_succeeds,
+                          },
+                          {
+                              .name = "sort_shell_succeeds",
+                              .f = sort_shell_succeeds,
                           }};
 
   const size_t num_tests = sizeof(tests) / sizeof(tests[0]);
@@ -49,6 +54,8 @@ int main(int argc, char **argv) {
 bool sort_selection_succeeds() { return test_sort_function(selection_sort); }
 
 bool sort_insertion_succeeds() { return test_sort_function(insertion_sort); }
+
+bool sort_shell_succeeds() { return test_sort_function(shell_sort); }
 
 bool test_sort_function(sort_fn f) {
   const char *expected = "abcdeeefghhijklmnoooopqrrsttuuvwxyz";
