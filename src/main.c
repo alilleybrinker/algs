@@ -18,7 +18,6 @@ bool sort_selection_succeeds();
 bool sort_insertion_succeeds();
 bool sort_shell_succeeds();
 bool test_sort_function(sort_fn);
-bool is_sorted(const char *, const size_t);
 
 int main(int argc, char **argv) {
   const test_t tests[] = {{
@@ -75,13 +74,4 @@ bool test_sort_function(sort_fn f) {
 
   free(s);
   return result;
-}
-
-bool is_sorted(const char *s, const size_t len) {
-  for (size_t i = 0; i < len - 1; ++i) {
-    if (s[i] > s[i + 1])
-      return false;
-  }
-
-  return true;
 }
