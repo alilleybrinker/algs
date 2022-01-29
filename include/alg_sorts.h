@@ -6,30 +6,30 @@
 #include <stdlib.h>
 
 /**
- * Produces a sorted equivalent of the input array.
+ * Sorts the provided array using the selection sort algorithm.
  *
- * Requires len be large enough to contain the input array.
- *
- * The returned array must be freed by the caller.
+ * This function sorts the array in-place, modifying the buffer
+ * passed-in directly. `len` must be equal to or less than the
+ * actual length of the buffer.
  **/
-char *selection_sort(const char *s, const size_t len);
+void selection_sort(char *s, const size_t len);
 
 /**
- * Produces a sorted equivalent of the input array.
+ * Sorts the provided array using the insertion sort algorithm.
  *
- * Requires len be large enough to contain the input array.
- *
- * The returned array must be freed by the caller.
+ * This function sorts the array in-place, modifying the buffer
+ * passed-in directly. `len` must be equal to or less than the
+ * actual length of the buffer.
  **/
-char *insertion_sort(const char *s, const size_t len);
+void insertion_sort(char *s, const size_t len);
 
 /**
- * Produces a sorted equivalent of the input array.
+ * Sorts the provided array using the Shell sort algorithm.
  *
- * Requires len be large enough to contain the input array.
- *
- * The returned array must be freed by the caller.
+ * This function sorts the array in-place, modifying the buffer
+ * passed-in directly. `len` must be equal to or less than the
+ * actual length of the buffer.
  **/
-char *shell_sort(const char *s, const size_t len);
+void shell_sort(char *s, const size_t len);
 
 #endif
