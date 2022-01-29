@@ -58,9 +58,52 @@ void insertion_sort(char *s, const size_t len) {
 void shell_sort(char *s, const size_t len) {
   N_OPS = 0;
 
-  /*
+  /**
+   * This code is adapted from the pseudocode in the Wikipedia article
+   * for Shell sort. Strangely, most other resources for implementing Shell
+   * sort solely cover the original Shell sequence of N/2, N/4, ..., 1,
+   * which isn't a very good sequence, and which is implemented in a
+   * slightly different manner from the sequence shown here.
+   *
    * https://en.wikipedia.org/wiki/Shellsort#Pseudocode
    * */
+
+  const size_t gaps[] = {5, 3, 1};
+  const size_t n_gaps = sizeof(gaps) / sizeof(gaps[0]);
+
+  if (DO_LOG) {
+    printf("%s\n", s);
+  }
+
+  for (size_t g = 0; g < n_gaps; ++g) {
+    const size_t gap = gaps[g];
+
+    for (size_t offset = 0; offset < gap; ++offset) {
+      for (size_t i = offset; i < len; i += gap) {
+        const char temp = s[i];
+        size_t j = i;
+
+        while (j >= gap && s[j - gap] > temp) {
+          if (DO_LOG) {
+            N_OPS += 1;
+            printf("comp: %c %c (%u)\n", temp, s[j - gap], N_OPS);
+            N_OPS += 1;
+            printf("swap: %c %c (%u)\n", s[j], s[j - gap], N_OPS);
+          }
+
+          s[j] = s[j - gap];
+
+          if (DO_LOG) {
+            printf("%s\n", s);
+          }
+
+          j -= gap;
+        }
+
+        s[j] = temp;
+      }
+    }
+  }
 }
 
 void exchange(char *a, const size_t i1, const size_t i2) {
