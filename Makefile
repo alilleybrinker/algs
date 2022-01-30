@@ -36,6 +36,15 @@ make_target_dir:
 	mkdir -p $(TARGET_DIR)/
 	mkdir -p $(OBJS_DIR)/
 
+# List all targets in this file.
+#
+# Modified from the excellent source:
+# https://stackoverflow.com/a/26339924
+list:
+	@LC_ALL=C $(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null \
+        | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' \
+        | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
+
 # Compile object files by building their C files.
 $(OBJS_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
@@ -44,5 +53,5 @@ $(OBJS_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
 $(TARGET_DIR)/$(BIN_NAME): $(OBJ_FILES)
 	$(CC) -o $(TARGET_DIR)/$(BIN_NAME) $(OBJ_FILES)
 
-.PHONY: all test clean fmt check make_target_dir
+.PHONY: all test clean fmt check make_target_dir list
 
