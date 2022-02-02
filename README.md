@@ -14,6 +14,7 @@ Currently, the following algorithms are implemented:
   * Insertion sort
   * Selection sort
   * Shell sort
+  * Bubble sort
 
 ## License
 
