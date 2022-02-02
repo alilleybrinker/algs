@@ -16,6 +16,7 @@ static unsigned int N_OPS = 0;
 void selection_sort(char *, const size_t);
 void insertion_sort(char *, const size_t);
 void shell_sort(char *, const size_t);
+void bubble_sort(char *, const size_t);
 
 static void exchange(char *, const size_t, const size_t);
 static size_t min_index(const char *, const size_t, const size_t);
@@ -107,7 +108,21 @@ void shell_sort(char *s, const size_t len) {
 }
 
 void bubble_sort(char *s, const size_t len) {
+  bool swapped;
+  size_t n = len;
 
+  do {
+    swapped = false;
+
+    for (size_t i = 1; i < n; ++i) {
+      if (s[i - 1] > s[i]) {
+        exchange(s, i - 1, i);
+        swapped = true;
+      }
+    }
+
+    n -= 1;
+  } while (swapped);
 }
 
 static void exchange(char *a, const size_t i1, const size_t i2) {

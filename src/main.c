@@ -34,8 +34,8 @@ int main(int argc, char **argv) {
                               .f = sort_shell_succeeds,
                           },
                           {
-                                .name = "sort_bubble_succeeds",
-                                .f = sort_bubble_succeeds,
+                              .name = "sort_bubble_succeeds",
+                              .f = sort_bubble_succeeds,
                           }};
 
   const size_t num_tests = sizeof(tests) / sizeof(tests[0]);
