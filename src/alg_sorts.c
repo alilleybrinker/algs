@@ -106,6 +106,10 @@ void shell_sort(char *s, const size_t len) {
   }
 }
 
+void bubble_sort(char *s, const size_t len) {
+
+}
+
 static void exchange(char *a, const size_t i1, const size_t i2) {
   if (DO_LOG) {
     N_OPS += 1;

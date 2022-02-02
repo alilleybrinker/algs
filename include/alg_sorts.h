@@ -32,4 +32,13 @@ void insertion_sort(char *s, const size_t len);
  **/
 void shell_sort(char *s, const size_t len);
 
+/**
+ * Sorts the provided array using the bubble sort algorithm.
+ *
+ * This function sorts the array in-place, modifying the buffer
+ * passed-in directly. `len` must be equal to or less than the
+ * actual length of the buffer.
+ **/
+void bubble_sort(char *s, const size_t len);
+
 #endif
