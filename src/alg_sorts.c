@@ -108,6 +108,8 @@ void shell_sort(char *s, const size_t len) {
 }
 
 void bubble_sort(char *s, const size_t len) {
+  N_OPS = 0;
+
   bool swapped;
   size_t n = len;
 
@@ -115,6 +117,11 @@ void bubble_sort(char *s, const size_t len) {
     swapped = false;
 
     for (size_t i = 1; i < n; ++i) {
+      if (DO_LOG) {
+        N_OPS += 1;
+        printf("comp: %c %c (%u)\n", s[i - 1], s[i], N_OPS);
+      }
+
       if (s[i - 1] > s[i]) {
         exchange(s, i - 1, i);
         swapped = true;
