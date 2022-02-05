@@ -17,6 +17,7 @@ void selection_sort(char *, const size_t);
 void insertion_sort(char *, const size_t);
 void shell_sort(char *, const size_t);
 void bubble_sort(char *, const size_t);
+void merge_sort(char *, const size_t);
 
 static void exchange(char *, const size_t, const size_t);
 static size_t min_index(const char *, const size_t, const size_t);
@@ -130,6 +131,10 @@ void bubble_sort(char *s, const size_t len) {
 
     n -= 1;
   } while (swapped);
+}
+
+void merge_sort(char *s, const size_t len) {
+  // TODO: Write this function.
 }
 
 static void exchange(char *a, const size_t i1, const size_t i2) {

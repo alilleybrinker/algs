@@ -41,4 +41,13 @@ void shell_sort(char *s, const size_t len);
  **/
 void bubble_sort(char *s, const size_t len);
 
+/**
+ * Sorts the provided array using the merge sort algorithm.
+ *
+ * This function sorts the array in-place, modifying the buffer
+ * passed-in directly. `len` must be equal to or less than the
+ * actual length of the buffer.
+ **/
+void merge_sort(char *s, const size_t len);
+
 #endif
