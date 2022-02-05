@@ -50,4 +50,13 @@ void bubble_sort(char *s, const size_t len);
  **/
 void merge_sort(char *s, const size_t len);
 
+/**
+ * Sorts the provided array using the quick sort algorithm.
+ *
+ * This function sorts the array in-place, modifying the buffer
+ * passed-in directly. `len` must be equal to or less than the
+ * actual length of the buffer.
+ **/
+void quick_sort(char *s, const size_t len);
+
 #endif
