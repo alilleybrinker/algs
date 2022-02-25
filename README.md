@@ -15,6 +15,10 @@ Currently, the following algorithms are implemented:
   * Selection sort
   * Shell sort
   * Bubble sort
+  * Merge sort
+  * Quick sort
+* Selecting
+  * Quick select
 
 ## License
 
