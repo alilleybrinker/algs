@@ -87,8 +87,8 @@ bool select_quick_succeeds() {
   const size_t len = strlen(text);
   char *s = (char *)malloc(sizeof(char) * len);
   strncpy(s, text, len);
-  const size_t k = 9;
-  const char expected = '9';
+  const size_t k = 1;
+  const char expected = '1';
   int result = EXIT_FAILURE;
   if (quick_select(s, len, k) == expected)
     result = EXIT_SUCCESS;

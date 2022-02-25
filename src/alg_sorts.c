@@ -100,7 +100,7 @@ void merge_sort(char *s, const size_t len) {
 void quick_sort(char *s, const size_t len) { quick_sort_inner(s, 0, len - 1); }
 
 const char quick_select(char *s, const size_t len, const size_t k) {
-  size_t low = 1;
+  size_t low = 0;
   size_t high = len;
 
   while (high > low) {
