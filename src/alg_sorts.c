@@ -15,8 +15,10 @@ void quick_sort(char *, const size_t);
 static void merge_sort_inner(char *, char *, const size_t, const size_t,
                              const size_t);
 static void merge(char *, char *, const size_t, const size_t, const size_t);
+static void quick_sort_inner(char *, const size_t, const size_t);
+static const size_t partition(char *, const size_t, const size_t);
 static void exchange(char *, const size_t, const size_t);
-static size_t min_index(const char *, const size_t, const size_t);
+static const size_t min_index(const char *, const size_t, const size_t);
 
 void selection_sort(char *s, const size_t len) {
   for (size_t i = 0; i < len; ++i) {
@@ -89,19 +91,12 @@ void bubble_sort(char *s, const size_t len) {
 }
 
 void merge_sort(char *s, const size_t len) {
-  // Allocate the temp buffer.
   char *temp = (char *)malloc(len * sizeof(char));
-
-  // Sort the array.
   merge_sort_inner(s, temp, len, 0, len);
-
-  // Free the temp buffer.
   free(temp);
 }
 
-void quick_sort(char *s, const size_t len) {
-  // TODO: Write this function.
-}
+void quick_sort(char *s, const size_t len) { quick_sort_inner(s, 0, len - 1); }
 
 static void merge_sort_inner(char *s, char *temp, const size_t len,
                              const size_t low, const size_t high) {
@@ -144,13 +139,50 @@ static void merge(char *s, char *temp, const size_t low, const size_t mid,
   }
 }
 
+static void quick_sort_inner(char *s, const size_t low, const size_t high) {
+  if (high <= low)
+    return;
+
+  const size_t mid = partition(s, low, high);
+  quick_sort_inner(s, low, mid - 1);
+  quick_sort_inner(s, mid + 1, high);
+}
+
+static const size_t partition(char *s, const size_t low, const size_t high) {
+  size_t i = low;
+  size_t j = high + 1;
+
+  while (true) {
+    const char pivot = s[low];
+
+    while (s[++i] < pivot) {
+      if (i == high)
+        break;
+    }
+
+    while (pivot < s[--j]) {
+      if (j == low)
+        break;
+    }
+
+    if (i >= j)
+      break;
+
+    exchange(s, i, j);
+  }
+
+  exchange(s, low, j);
+
+  return j;
+}
+
 static void exchange(char *a, const size_t i1, const size_t i2) {
   char tmp = a[i1];
   a[i1] = a[i2];
   a[i2] = tmp;
 }
 
-static size_t min_index(const char *a, const size_t s, const size_t len) {
+static const size_t min_index(const char *a, const size_t s, const size_t len) {
   size_t v = s;
 
   for (size_t i = s + 1; i < len; ++i) {
