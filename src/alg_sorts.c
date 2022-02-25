@@ -12,6 +12,9 @@ void bubble_sort(char *, const size_t);
 void merge_sort(char *, const size_t);
 void quick_sort(char *, const size_t);
 
+static void merge_sort_inner(char *, char *, const size_t, const size_t,
+                             const size_t);
+static void merge(char *, char *, const size_t, const size_t, const size_t);
 static void exchange(char *, const size_t, const size_t);
 static size_t min_index(const char *, const size_t, const size_t);
 
@@ -86,11 +89,59 @@ void bubble_sort(char *s, const size_t len) {
 }
 
 void merge_sort(char *s, const size_t len) {
-  // TODO: Write this function.
+  // Allocate the temp buffer.
+  char *temp = (char *)malloc(len * sizeof(char));
+
+  // Sort the array.
+  merge_sort_inner(s, temp, len, 0, len);
+
+  // Free the temp buffer.
+  free(temp);
 }
 
 void quick_sort(char *s, const size_t len) {
   // TODO: Write this function.
+}
+
+static void merge_sort_inner(char *s, char *temp, const size_t len,
+                             const size_t low, const size_t high) {
+  if ((high - low) <= 1)
+    return;
+  const size_t mid = (high + low) / 2;
+  merge_sort_inner(s, temp, len, low, mid);
+  merge_sort_inner(s, temp, len, mid, high);
+  merge(s, temp, low, mid, high);
+}
+
+static void merge(char *s, char *temp, const size_t low, const size_t mid,
+                  const size_t high) {
+  for (size_t i = low; i < high; ++i)
+    temp[i] = s[i];
+
+  size_t i = low;
+  size_t j = mid;
+
+  for (size_t k = low; k < high; ++k) {
+    if (i >= mid) {
+      for (; j < high; ++j) {
+        s[k] = temp[j];
+        k += 1;
+      }
+      break;
+    } else if (j >= high) {
+      for (; i < mid; ++i) {
+        s[k] = temp[i];
+        k += 1;
+      }
+      break;
+    } else if (temp[i] < temp[j]) {
+      s[k] = temp[i];
+      i += 1;
+    } else {
+      s[k] = temp[j];
+      j += 1;
+    }
+  }
 }
 
 static void exchange(char *a, const size_t i1, const size_t i2) {
