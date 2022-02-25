@@ -11,14 +11,16 @@ void shell_sort(char *, const size_t);
 void bubble_sort(char *, const size_t);
 void merge_sort(char *, const size_t);
 void quick_sort(char *, const size_t);
-const char quick_select(char *, const size_t, const size_t);
+const int quick_select(int *, const size_t, const size_t);
 
 static void merge_sort_inner(char *, char *, const size_t, const size_t,
                              const size_t);
 static void merge(char *, char *, const size_t, const size_t, const size_t);
 static void quick_sort_inner(char *, const size_t, const size_t);
 static const size_t partition(char *, const size_t, const size_t);
+static const size_t partition_i(int *, const size_t, const size_t);
 static void exchange(char *, const size_t, const size_t);
+static void exchange_i(int *, const size_t, const size_t);
 static const size_t min_index(const char *, const size_t, const size_t);
 
 void selection_sort(char *s, const size_t len) {
@@ -99,12 +101,12 @@ void merge_sort(char *s, const size_t len) {
 
 void quick_sort(char *s, const size_t len) { quick_sort_inner(s, 0, len - 1); }
 
-const char quick_select(char *s, const size_t len, const size_t k) {
+const int quick_select(int *s, const size_t len, const size_t k) {
   size_t low = 0;
   size_t high = len;
 
   while (high > low) {
-    const size_t m = partition(s, low, high);
+    const size_t m = partition_i(s, low, high);
 
     if (m == k)
       return s[m];
@@ -195,8 +197,42 @@ static const size_t partition(char *s, const size_t low, const size_t high) {
   return j;
 }
 
+static const size_t partition_i(int *s, const size_t low, const size_t high) {
+  size_t i = low;
+  size_t j = high + 1;
+
+  while (true) {
+    const int pivot = s[low];
+
+    while (s[++i] < pivot) {
+      if (i == high)
+        break;
+    }
+
+    while (pivot < s[--j]) {
+      if (j == low)
+        break;
+    }
+
+    if (i >= j)
+      break;
+
+    exchange_i(s, i, j);
+  }
+
+  exchange_i(s, low, j);
+
+  return j;
+}
+
 static void exchange(char *a, const size_t i1, const size_t i2) {
   char tmp = a[i1];
+  a[i1] = a[i2];
+  a[i2] = tmp;
+}
+
+static void exchange_i(int *a, const size_t i1, const size_t i2) {
+  int tmp = a[i1];
   a[i1] = a[i2];
   a[i2] = tmp;
 }

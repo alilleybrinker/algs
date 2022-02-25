@@ -83,16 +83,27 @@ bool sort_merge_succeeds() { return test_sort_function(merge_sort); }
 bool sort_quick_succeeds() { return test_sort_function(quick_sort); }
 
 bool select_quick_succeeds() {
-  char *text = "123456789";
-  const size_t len = strlen(text);
-  char *s = (char *)malloc(sizeof(char) * len);
-  strncpy(s, text, len);
-  const size_t k = 1;
-  const char expected = '1';
+  // Setup a heap allocated array with the desired contents.
+  int orig[] = {3, 17, -5, 4, 13, 8, 7, 6, 9};
+  const size_t len = sizeof(orig) / sizeof(orig[0]);
+  const size_t blen = sizeof(int) * len;
+  int *a = (int *)malloc(blen);
+  memcpy(a, orig, blen);
+
+  // -5 3 4 6 7 8 9 13 17
+  //  1 2 3 4 5 6 7  8  9
+
+  // Set which element we're looking for.
+  const size_t k = 7;
+  const int expected = 9;
   int result = EXIT_FAILURE;
-  if (quick_select(s, len, k) == expected)
+  int output = quick_select(a, len, k);
+
+  printf("%zuth smallest: %i\n", k, output);
+
+  if (output == expected)
     result = EXIT_SUCCESS;
-  free(s);
+  free(a);
   return result;
 }
 

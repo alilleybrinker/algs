@@ -65,6 +65,6 @@ void quick_sort(char *s, const size_t len);
  * This function implements the "quickselect" algorithm, using
  * the same `partition` function used to implement `quick_sort`.
  */
-const char quick_select(char *s, const size_t len, const size_t k);
+const int quick_select(int *s, const size_t len, const size_t k);
 
 #endif
