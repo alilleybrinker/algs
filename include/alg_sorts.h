@@ -59,4 +59,12 @@ void merge_sort(char *s, const size_t len);
  **/
 void quick_sort(char *s, const size_t len);
 
+/**
+ * Select the kth-largest element from the array.
+ *
+ * This function implements the "quickselect" algorithm, using
+ * the same `partition` function used to implement `quick_sort`.
+ */
+const char quick_select(char *s, const size_t len, const size_t k);
+
 #endif

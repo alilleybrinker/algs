@@ -11,6 +11,7 @@ void shell_sort(char *, const size_t);
 void bubble_sort(char *, const size_t);
 void merge_sort(char *, const size_t);
 void quick_sort(char *, const size_t);
+const char quick_select(char *, const size_t, const size_t);
 
 static void merge_sort_inner(char *, char *, const size_t, const size_t,
                              const size_t);
@@ -97,6 +98,24 @@ void merge_sort(char *s, const size_t len) {
 }
 
 void quick_sort(char *s, const size_t len) { quick_sort_inner(s, 0, len - 1); }
+
+const char quick_select(char *s, const size_t len, const size_t k) {
+  size_t low = 1;
+  size_t high = len;
+
+  while (high > low) {
+    const size_t m = partition(s, low, high);
+
+    if (m == k)
+      return s[m];
+    if (m < k)
+      low = m + 1;
+    else
+      high = m - 1;
+  }
+
+  return s[k];
+}
 
 static void merge_sort_inner(char *s, char *temp, const size_t len,
                              const size_t low, const size_t high) {

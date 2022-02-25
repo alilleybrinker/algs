@@ -20,6 +20,7 @@ bool sort_shell_succeeds();
 bool sort_bubble_succeeds();
 bool sort_merge_succeeds();
 bool sort_quick_succeeds();
+bool select_quick_succeeds();
 bool test_sort_function(sort_fn);
 
 int main(int argc, char **argv) {
@@ -46,6 +47,10 @@ int main(int argc, char **argv) {
                           {
                               .name = "sort_quick_succeeds",
                               .f = sort_quick_succeeds,
+                          },
+                          {
+                              .name = "select_quick_succeeds",
+                              .f = select_quick_succeeds,
                           }};
 
   const size_t num_tests = sizeof(tests) / sizeof(tests[0]);
@@ -77,11 +82,25 @@ bool sort_merge_succeeds() { return test_sort_function(merge_sort); }
 
 bool sort_quick_succeeds() { return test_sort_function(quick_sort); }
 
+bool select_quick_succeeds() {
+  char *text = "123456789";
+  const size_t len = strlen(text);
+  char *s = (char *)malloc(sizeof(char) * len);
+  strncpy(s, text, len);
+  const size_t k = 9;
+  const char expected = '9';
+  int result = EXIT_FAILURE;
+  if (quick_select(s, len, k) == expected)
+    result = EXIT_SUCCESS;
+  free(s);
+  return result;
+}
+
 bool test_sort_function(sort_fn f) {
   const char *expected = "abcdeeefghhijklmnoooopqrrsttuuvwxyz";
 
   const char *text = "thequickbrownfoxjumpsoverthelazydog";
-  const char len = strlen(text);
+  const size_t len = strlen(text);
 
   char *s = (char *)malloc(sizeof(char) * len);
   strncpy(s, text, len);
