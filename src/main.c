@@ -84,13 +84,13 @@ bool sort_quick_succeeds() { return test_sort_function(quick_sort); }
 
 bool select_quick_succeeds() {
   // Setup
-  int orig[] = {3, 17, -5, 4, 13, 8, 7, 6, 9};
+  int orig[] = {9, 8, 6, 4, -100};
   const size_t len = sizeof(orig) / sizeof(orig[0]);
   const size_t blen = sizeof(int) * len;
   int *a = (int *)malloc(blen);
   memcpy(a, orig, blen);
-  const size_t k = 7;
-  const int expected = 9;
+  const size_t k = (len + 1) / 2;
+  const int expected = 6;
 
   // Run the test
   int result = EXIT_FAILURE;
