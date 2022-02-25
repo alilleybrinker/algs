@@ -22,7 +22,6 @@ static const size_t partition_i(int *, const size_t, const size_t);
 static void exchange(char *, const size_t, const size_t);
 static void exchange_i(int *, const size_t, const size_t);
 static const size_t min_index(const char *, const size_t, const size_t);
-static void print_array_i(int *, const size_t);
 
 void selection_sort(char *s, const size_t len) {
   for (size_t i = 0; i < len; ++i) {
@@ -107,24 +106,14 @@ const int quick_select(int *s, const size_t len, const size_t k) {
   size_t high = len;
 
   while (high > low) {
-    printf("s = ");
-    print_array_i(s, len);
-
     const size_t m = partition_i(s, low, high);
 
-    printf("m = %zu (value: %i)\n", m, s[m]);
-
-    if (m == k) {
-      printf("status: found %zu-smallest (value: %i), done.\n", k, s[m]);
+    if (m == k)
       return s[m];
-    }
-    if (m < k) {
-      printf("status: %zu < %zu, going right...\n", m, k);
+    if (m < k)
       low = m + 1;
-    } else {
-      printf("status: %zu > %zu, going left...\n", m, k);
+    else
       high = m - 1;
-    }
   }
 
   return s[k];
@@ -257,17 +246,4 @@ static const size_t min_index(const char *a, const size_t s, const size_t len) {
   }
 
   return v;
-}
-
-static void print_array_i(int *s, const size_t len) {
-  if (len <= 0)
-    return;
-
-  printf("[%i", s[0]);
-
-  for (size_t i = 1; i < len; ++i) {
-    printf(", %i", s[i]);
-  }
-
-  printf("]\n");
 }
