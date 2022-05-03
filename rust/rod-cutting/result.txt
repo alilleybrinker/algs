@@ -1,0 +1,59 @@
+    Finished dev [unoptimized + debuginfo] target(s) in 0.00s
+     Running `target/debug/rod-cutting`
+Calculating max revenue for rod length of 4 inches
+Values: [0, 0, 0, 0, 0]
+Length: 1 inches
+Split at: 1 inches
+Prior best: $0
+New chance: $1
+Better one: $1
+Values: [0, 1, 0, 0, 0]
+Length: 2 inches
+Split at: 1 inches
+Prior best: $0
+New chance: $2
+Better one: $2
+Values: [0, 1, 2, 0, 0]
+Split at: 2 inches
+Prior best: $2
+New chance: $5
+Better one: $5
+Values: [0, 1, 5, 0, 0]
+Length: 3 inches
+Split at: 1 inches
+Prior best: $0
+New chance: $6
+Better one: $6
+Values: [0, 1, 5, 6, 0]
+Split at: 2 inches
+Prior best: $6
+New chance: $6
+Better one: $6
+Values: [0, 1, 5, 6, 0]
+Split at: 3 inches
+Prior best: $6
+New chance: $8
+Better one: $8
+Values: [0, 1, 5, 8, 0]
+Length: 4 inches
+Split at: 1 inches
+Prior best: $0
+New chance: $9
+Better one: $9
+Values: [0, 1, 5, 8, 9]
+Split at: 2 inches
+Prior best: $9
+New chance: $10
+Better one: $10
+Values: [0, 1, 5, 8, 10]
+Split at: 3 inches
+Prior best: $10
+New chance: $9
+Better one: $10
+Values: [0, 1, 5, 8, 10]
+Split at: 4 inches
+Prior best: $10
+New chance: $9
+Better one: $10
+Values: [0, 1, 5, 8, 10]
+Max: $10
